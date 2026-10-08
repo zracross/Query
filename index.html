@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Class IX Students' Council</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+</head>
+
+<body>
+
+    <!-- Background -->
+    <div class="background">
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+        <div class="grid"></div>
+    </div>
+
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <div class="brand">
+            <div class="brand-logo">IX</div>
+
+            <div>
+                <div class="brand-title">CLASS IX</div>
+                <div class="brand-subtitle">STUDENTS' COUNCIL</div>
+            </div>
+        </div>
+
+        <div class="status">
+            <span class="status-dot"></span>
+            COUNCIL PORTAL
+        </div>
+
+    </header>
+
+
+    <!-- HERO -->
+
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-badge">
+                STUDENT SUPPORT • CLASS IX
+            </div>
+
+            <h1>
+                Your Query.
+                <span>Our Council.</span>
+            </h1>
+
+            <p>
+                Have a question, suggestion or school-related issue?
+                Submit it to the Class IX Students' Council and track
+                the response anytime.
+            </p>
+
+        </section>
+
+
+        <!-- THREE OPTIONS -->
+
+        <section class="options">
+
+            <!-- OPTION 1 -->
+
+            <button class="option-card" onclick="openPage('submit')">
+
+                <div class="option-number">01</div>
+
+                <div class="option-icon">✦</div>
+
+                <h2>Submit a Query</h2>
+
+                <p>
+                    Send your question, suggestion or school-related
+                    query to the Students' Council.
+                </p>
+
+                <div class="option-link">
+                    OPEN →
+                </div>
+
+            </button>
+
+
+            <!-- OPTION 2 -->
+
+            <button class="option-card" onclick="openPage('check')">
+
+                <div class="option-number">02</div>
+
+                <div class="option-icon">⌁</div>
+
+                <h2>Check Query</h2>
+
+                <p>
+                    Enter your Query ID and check the latest status
+                    and council response.
+                </p>
+
+                <div class="option-link">
+                    CHECK →
+                </div>
+
+            </button>
+
+
+            <!-- OPTION 3 -->
+
+            <button class="option-card admin-card" onclick="openPage('adminLogin')">
+
+                <div class="option-number">03</div>
+
+                <div class="option-icon">◆</div>
+
+                <h2>Council Admin</h2>
+
+                <p>
+                    Authorized Students' Council members can access
+                    the administrative dashboard.
+                </p>
+
+                <div class="option-link">
+                    ADMIN LOGIN →
+                </div>
+
+            </button>
+
+        </section>
+
+
+        <!-- SUBMIT PAGE -->
+
+        <section id="submitPage" class="page hidden">
+
+            <div class="page-header">
+
+                <button onclick="goHome()" class="back-btn">
+                    ← BACK
+                </button>
+
+                <div>
+                    <div class="small-label">01 / SUBMIT</div>
+                    <h2>Submit a Query</h2>
+                </div>
+
+            </div>
+
+
+            <div class="form-card">
+
+                <form id="queryForm">
+
+                    <label>Student Name</label>
+
+                    <input
+                        id="studentName"
+                        type="text"
+                        placeholder="Enter your name"
+                        required
+                    >
+
+
+                    <label>WhatsApp Number</label>
+
+                    <input
+                        id="whatsapp"
+                        type="tel"
+                        placeholder="Enter WhatsApp number"
+                        maxlength="10"
+                        required
+                    >
+
+
+                    <label>Query</label>
+
+                    <textarea
+                        id="query"
+                        placeholder="Write your query..."
+                        required
+                    ></textarea>
+
+
+                    <div class="captcha-box">
+
+                        <div class="captcha-question">
+                            <span id="captchaQuestion"></span>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="refresh-captcha"
+                            onclick="generateCaptcha()"
+                        >
+                            ↻
+                        </button>
+
+                    </div>
+
+
+                    <input
+                        id="captchaAnswer"
+                        type="number"
+                        placeholder="Enter CAPTCHA answer"
+                        required
+                    >
+
+
+                    <button class="primary-btn" type="submit">
+                        SUBMIT QUERY →
+                    </button>
+
+                </form>
+
+                <div id="submitResult" class="result"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CHECK PAGE -->
+
+        <section id="checkPage" class="page hidden">
+
+            <div class="page-header">
+
+                <button onclick="goHome()" class="back-btn">
+                    ← BACK
+                </button>
+
+                <div>
+                    <div class="small-label">02 / TRACK</div>
+                    <h2>Check Query</h2>
+                </div>
+
+            </div>
+
+
+            <div class="form-card">
+
+                <label>Query ID</label>
+
+                <input
+                    id="queryId"
+                    type="text"
+                    placeholder="Example: QRY-20261008-0001"
+                >
+
+                <button
+                    class="primary-btn"
+                    onclick="checkQuery()"
+                >
+                    CHECK STATUS →
+                </button>
+
+                <div id="queryResult" class="result"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ADMIN LOGIN -->
+
+        <section id="adminLoginPage" class="page hidden">
+
+            <div class="page-header">
+
+                <button onclick="goHome()" class="back-btn">
+                    ← BACK
+                </button>
+
+                <div>
+                    <div class="small-label">03 / SECURE</div>
+                    <h2>Council Admin</h2>
+                </div>
+
+            </div>
+
+
+            <div class="form-card admin-login">
+
+                <div class="lock-icon">
+                    ◆
+                </div>
+
+                <h3>Authorized Access</h3>
+
+                <p>
+                    This area is restricted to Students' Council
+                    administrators.
+                </p>
+
+
+                <label>Admin ID</label>
+
+                <input
+                    id="adminId"
+                    type="text"
+                    placeholder="Enter Admin ID"
+                >
+
+
+                <label>Password</label>
+
+                <input
+                    id="adminPassword"
+                    type="password"
+                    placeholder="Enter password"
+                >
+
+
+                <button
+                    class="primary-btn"
+                    onclick="adminLogin()"
+                >
+                    LOGIN →
+                </button>
+
+                <div id="loginResult" class="result"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ADMIN DASHBOARD -->
+
+        <section id="adminDashboardPage" class="page hidden">
+
+            <div class="page-header">
+
+                <button onclick="logoutAdmin()" class="back-btn">
+                    ← LOGOUT
+                </button>
+
+                <div>
+                    <div class="small-label">ADMIN / DASHBOARD</div>
+                    <h2>Council Dashboard</h2>
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-top">
+
+                <div class="dashboard-card">
+                    <span>Total Queries</span>
+                    <strong id="totalQueries">—</strong>
+                </div>
+
+                <div class="dashboard-card">
+                    <span>Pending</span>
+                    <strong id="pendingQueries">—</strong>
+                </div>
+
+                <div class="dashboard-card">
+                    <span>Replied</span>
+                    <strong id="repliedQueries">—</strong>
+                </div>
+
+            </div>
+
+
+            <div class="admin-notice">
+
+                <strong>ADMIN SYSTEM</strong>
+
+                <p>
+                    The authentication system is connected.
+                    Query management endpoints will be connected
+                    when the Query Apps Script is updated with
+                    admin-management functions.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <div>
+            CLASS IX STUDENTS' COUNCIL
+        </div>
+
+        <div>
+            DIGITAL QUERY PORTAL
+        </div>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
